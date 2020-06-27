@@ -1,0 +1,103 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div class="col-lg-12 text-center mt-5">
+        <h1>Bootstrap - Search Box Plugin</h1>
+    </div>
+    <div class="col-md-4 offset-md-4 mt-5 border border-success pt-3">
+        <form id="searchForm">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="searchInput" placeholder="Search ......" aria-label="Recipient's username" name="query">
+                <div class="input-group-append">
+                    <button type="submit" class="input-group-text" id="submitBtn"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table id="table" class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Music</th>
+                <th scope="col">LyricsWriter</th>
+                <th scope="col">Artist</th>
+                <th scope="col">Movie</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Lyrics</th>
+                <th scope="col">Beat and Key</th>
+                <th scope="col">Views</th>
+            </tr>
+        </thead>
+        <tbody id="resultTable">
+        </tbody>
+    </table>
+</body>
+
+</html>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#searchForm').submit(function(e) {
+            $('#resultTable').empty();
+            e.preventDefault();
+            var search_query = $('#searchInput').val();
+            console.log(search_query);
+            var url = "http://localhost:5000/search";
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    query: search_query
+                },
+                success: function(data, textStatus) {
+                    var params = ["songName", "music", "lyricsCreater", "artists", "movie", "genre", "lyrics", "beat", "views"];
+                    var count = data.hits.total.value;
+                    var lyrics_data = data.hits.hits
+                    if (!count > 0) {
+                        console.log("No result found!")
+                        return null
+                    }
+                    for (var row_count = 0; row_count < count; row_count++) {
+                        $('#resultTable').append('<tr>');
+                        $('#resultTable').append('<th scope="raw">' + (row_count + 1) + '</th>');
+                        for (var i = 0; i < params.length; i++) {
+                            var k = params[i]
+                            var temp = lyrics_data[row_count]._source[k]
+                            var table_string = ""
+                            if (temp instanceof Array) {
+                                for (var x = 0; x < temp.length; x++) {
+                                    table_string = temp[x] + "\n"
+                                }
+                            } else {
+                                table_string = String(temp)
+                            }
+                            console.log(table_string)
+                            $('#resultTable').append('<td style="white-space:pre-wrap; word-wrap:break-word">' + table_string + '</td>');
+                        }
+                        $('#resultTable').append('</tr>');
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log("Some error!");
+                }
+            });
+        });
+    });
+</script>

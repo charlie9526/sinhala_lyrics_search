@@ -1,0 +1,37 @@
+PUT test_lyrics
+{
+  "mappings": {
+    "properties": {
+      "lyrics":{
+        "type": "search_as_you_type"
+      },
+      "artists":{
+        "type": "text"
+      },
+      "movie":{
+        "type": "search_as_you_type"
+      },
+      "songName":{
+        "type": "search_as_you_type"
+      },
+      "genre":{
+        "type": "text"
+      },
+      "key":{
+        "type": "keyword"
+      },
+      "views":{
+        "type": "long"
+      },
+      "lyricsCreater":{
+        "type": "text"
+      },
+      "music":{
+        "type": "text"
+      },
+      "beat":{
+        "type": "keyword"
+      }
+    }
+  }
+}
