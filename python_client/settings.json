@@ -1,20 +1,50 @@
 PUT test_lyrics
 {
+  "settings":{
+    "analysis":{
+      "analyzer":{
+        "edgengram_and_stopwords":{
+          "tokenizer":"standard",
+          "filter":["3_100_edgegrams","mine_stop_filter"]
+        },
+        "edgengram":{
+          "tokenizer":"standard",
+          "filter":["3_100_edgegrams"]
+        }
+      },
+      "filter":{
+        "3_100_edgegrams":{
+          "type": "edge_ngram",
+          "min_gram": 2,
+          "max_gram": 100
+        },
+        "mine_stop_filter":{
+          "type":"stop",
+          "stopwords":["සහ","හා", "වැනි", "සේ", "‌මෙන්", "සමග"]
+        }
+      }
+    }
+  },
   "mappings": {
     "properties": {
       "lyrics":{
-        "type": "search_as_you_type"
+        "analyzer": "edgengram_and_stopwords", 
+        "type": "text"
       },
       "artists":{
+        "analyzer": "edgengram", 
         "type": "text"
       },
       "movie":{
-        "type": "search_as_you_type"
+        "analyzer": "edgengram", 
+        "type": "text"
       },
       "songName":{
-        "type": "search_as_you_type"
+        "analyzer": "edgengram", 
+        "type": "text"
       },
       "genre":{
+        "analyzer": "edgengram", 
         "type": "text"
       },
       "key":{
@@ -24,9 +54,11 @@ PUT test_lyrics
         "type": "long"
       },
       "lyricsCreater":{
+        "analyzer": "edgengram", 
         "type": "text"
       },
       "music":{
+        "analyzer": "edgengram", 
         "type": "text"
       },
       "beat":{
