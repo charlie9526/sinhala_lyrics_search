@@ -64,7 +64,7 @@
                 type: "POST",
                 url: url,
                 data: {
-                    query: search_query
+                    search_string: search_query
                 },
                 success: function(data, textStatus) {
                     var params = ["songName", "music", "lyricsCreater", "artists", "movie", "genre", "lyrics", "beat", "views"];
@@ -82,8 +82,9 @@
                             var temp = lyrics_data[row_count]._source[k]
                             var table_string = ""
                             if (temp instanceof Array) {
+                                console.log(temp)
                                 for (var x = 0; x < temp.length; x++) {
-                                    table_string = temp[x] + "\n"
+                                    table_string = table_string + "\n" + temp[x]
                                 }
                             } else {
                                 table_string = String(temp)

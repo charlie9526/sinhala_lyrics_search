@@ -15,7 +15,7 @@ PUT test_lyrics
       "filter":{
         "3_100_edgegrams":{
           "type": "edge_ngram",
-          "min_gram": 2,
+          "min_gram": 3,
           "max_gram": 100
         },
         "mine_stop_filter":{
@@ -48,7 +48,7 @@ PUT test_lyrics
         "type": "text"
       },
       "key":{
-        "type": "keyword"
+        "type": "text"
       },
       "views":{
         "type": "long"
