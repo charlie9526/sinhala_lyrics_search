@@ -4,11 +4,13 @@ import scrapy
 from mtranslate import translate
 from sinhala_songs_lyrics_scraper.items import SinhalaSongsLyricsScraperItem
 
+MIN_RANGE = 21
+MAX_RANGE = 24
 
 class SinhlaSongsLyricsSpider(scrapy.Spider):
     name = "sinhala_songs_lyrics_spider"
 
-    start_urls = ["https://sinhalasongbook.com/all-sinhala-song-lyrics-and-chords/?_page=" + str(x) for x in range(5,7)]    
+    start_urls = ["https://sinhalasongbook.com/all-sinhala-song-lyrics-and-chords/?_page=" + str(x) for x in range(MIN_RANGE,MAX_RANGE)]    
 
     def parse(self, response):
         global translation_helper

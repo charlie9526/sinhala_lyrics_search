@@ -1,0 +1,2 @@
+scrapy crawl sinhala_songs_lyrics_spider  -o lyrics.json
+SET PYTHONPATH=%cd%;%cd%\slim

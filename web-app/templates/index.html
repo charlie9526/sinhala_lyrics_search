@@ -35,7 +35,8 @@
                 <th scope="col">Movie</th>
                 <th scope="col">Genre</th>
                 <th scope="col">Lyrics</th>
-                <th scope="col">Beat and Key</th>
+                <th scope="col">Beat</th>
+                <th scope="col">Key</th>
                 <th scope="col">Views</th>
             </tr>
         </thead>
@@ -67,8 +68,8 @@
                     search_string: search_query
                 },
                 success: function(data, textStatus) {
-                    var params = ["songName", "music", "lyricsCreater", "artists", "movie", "genre", "lyrics", "beat", "views"];
-                    var count = data.hits.total.value;
+                    var params = ["songName", "music", "lyricsCreater", "artists", "movie", "genre", "lyrics", "beat", "key", "views"];
+                    var count = data.hits.hits.length;
                     var lyrics_data = data.hits.hits
                     if (!count > 0) {
                         console.log("No result found!")
@@ -82,14 +83,12 @@
                             var temp = lyrics_data[row_count]._source[k]
                             var table_string = ""
                             if (temp instanceof Array) {
-                                console.log(temp)
                                 for (var x = 0; x < temp.length; x++) {
                                     table_string = table_string + "\n" + temp[x]
                                 }
                             } else {
                                 table_string = String(temp)
                             }
-                            console.log(table_string)
                             $('#resultTable').append('<td style="white-space:pre-wrap; word-wrap:break-word">' + table_string + '</td>');
                         }
                         $('#resultTable').append('</tr>');
