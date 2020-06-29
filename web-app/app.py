@@ -12,7 +12,7 @@ from flask import Flask, redirect, url_for, request, render_template
 ES_HOST = 'localhost'
 ES_PORT = 9200
 INDEX = "test_lyrics"
-DEFAULT_RESULTS = 10
+DEFAULT_RESULTS = 15
 
 app = Flask(__name__)
 es = Elasticsearch([{'host': ES_HOST, 'port': ES_PORT}])
@@ -26,8 +26,8 @@ def view_app():
 def search():
     if request.method == 'POST':
         search_string = request.form['search_string']
-        word_list, processed_raw_query = process_word(search_string)
-        classifiere_result = classify_query(word_list,DEFAULT_RESULTS,search_string)
+        word_list = process_word(search_string)
+        classifiere_result,processed_raw_query = classify_query(word_list,DEFAULT_RESULTS,search_string)
         final_query = get_final_query(classifiere_result,processed_raw_query)
         result = search_main(final_query,es,INDEX)
         return result
