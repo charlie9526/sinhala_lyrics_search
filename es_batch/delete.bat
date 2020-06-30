@@ -1,1 +1,1 @@
-curl -X DELETE "localhost:9200/sinhala_lyrics?pretty"
+curl -X DELETE "localhost:9200/test_lyrics?pretty"

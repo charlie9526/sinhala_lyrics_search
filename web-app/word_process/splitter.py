@@ -4,7 +4,7 @@ def process_word(sentence):
     raw_list = sentence.split()
     temp_list = [] 
     for raw_word in raw_list:
-        if len(raw_word) <8:
+        if len(raw_word) <7:
             temp_list.append(raw_word)
             continue
         result = word_splitter.split(raw_word)

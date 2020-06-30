@@ -4,8 +4,8 @@ import scrapy
 from mtranslate import translate
 from sinhala_songs_lyrics_scraper.items import SinhalaSongsLyricsScraperItem
 
-MIN_RANGE = 21
-MAX_RANGE = 24
+MIN_RANGE = 1
+MAX_RANGE = 10
 
 class SinhlaSongsLyricsSpider(scrapy.Spider):
     name = "sinhala_songs_lyrics_spider"
