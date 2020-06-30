@@ -14,6 +14,7 @@ Key Requirements <br>
     7. Singling - python <br>
     8. Mtranslate - python <br>
 
+Steps
 1) Scraping
     The scraper is the directory of the scraping of the project. Song lyrics are scraped from "https://sinhalasongbook.com". Default 10 pages are scraped and the range can be changed by MIN_RANGE and MAX_RANGE variables of the  "scraper\sinhala_songs_lyrics_scraper\sinhala_songs_lyrics_scraper\spiders\sinhala_songs_lyrics_spider.py".
     run following command from "scraper\sinhala_songs_lyrics_scraper" 
