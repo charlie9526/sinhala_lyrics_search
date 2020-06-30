@@ -16,7 +16,10 @@ Key Requirements <br>
 
 1) Scraping
     The scraper is the directory of the scraping of the project. Song lyrics are scraped from "https://sinhalasongbook.com". Default 10 pages are scraped and the range can be changed by MIN_RANGE and MAX_RANGE variables of the  "scraper\sinhala_songs_lyrics_scraper\sinhala_songs_lyrics_scraper\spiders\sinhala_songs_lyrics_spider.py".
-
+    run following command from "scraper\sinhala_songs_lyrics_scraper" 
+    
+    scrapy crawl sinhala_songs_lyrics_spider  -o lyrics.json
+    
     The output of the scrper is the "lyrics.json" file of the "scraper\sinhala_songs_lyrics_scraper". Default the lyrics.json is consisted of 1005 songs.
 
 2) JSON converter
