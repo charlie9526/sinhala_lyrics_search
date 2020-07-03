@@ -1,3 +1,10 @@
+Folder structure <br>
+    1. es_batch - Important batch file to input documents from BULK API (create_index.bat) <br>
+    2. json_converter - Convert the JSON file in to the specified format of the BULK API <br>
+    3. scraper - Scrapy application for song scraping <br>
+    4. web-app - Flask application for query processing and simple UI. 
+    
+
 There are four main steps in the project <br>
     1. Scraping - Scrapy <br>
     2. Json converting - Python <br>
