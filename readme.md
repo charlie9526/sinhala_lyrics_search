@@ -59,7 +59,7 @@ curl -H "Content-Type: application/json" -XPOST "localhost:9200/test_lyrics/_bul
 
     Search and enjoy Sinhala lyrics from "http://localhost:5000/".
 # Important
-If your elastic search port is not 9200 and host is not the localhost ,you should change 3 rd step curl command's "localhost:9200" and the app.py file's "ES_HOST", "ES_PORT" variables.
+If your elastic search port is not 9200 and host is not the localhost ,you should change 3 rd step curl command's "localhost:9200" and the 4th step app.py file's "ES_HOST", "ES_PORT" variables.
 Here the "localhost:9200" is considered.
 
 # Examples
