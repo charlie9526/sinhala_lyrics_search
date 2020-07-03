@@ -44,7 +44,7 @@ scrapy crawl sinhala_songs_lyrics_spider  -o lyrics.json
     Scraped result is with unicode and it is not capable of using for the BULK API of the Elasticsearch. Therefore according to the reqired format of the BULK API the lyrics         document file is genrated by running "bulk_unicode_converter.py" of the json_converter directory.
 
 3) Indexing
-    The most important part of the project. The index creating mapping and settings are in the "settings.json" file in the mapping directory. Use kibana to create index by           copying and pasting the command of the "mapping/settings.json". You can simply add all song documents by running "create_index.bat" batch file of es_batch directory or           run the folowing curl command within the json_converter directory. The index name is "test_lyrics"
+    The most important part of the project. The index creating mapping and settings are in the "settings.json" file in the mapping directory. Use kibana to create index by           copying and pasting the command of the "mapping/settings.json". You can simply add all song documents by running "bulk_es.bat" batch file of es_batch directory or           run the folowing curl command within the json_converter directory. The index name is "test_lyrics"
 
 ```
 curl -H "Content-Type: application/json" -XPOST "localhost:9200/test_lyrics/_bulk?pretty&refresh" --data-binary "@bulk_sin_lyrics.json"
@@ -59,8 +59,13 @@ curl -H "Content-Type: application/json" -XPOST "localhost:9200/test_lyrics/_bul
 
     Search and enjoy Sinhala lyrics from "http://localhost:5000/".
 # Important
-If your elastic search port is not 9200 and host is not the localhost ,you should change 3 rd step curl command's "localhost:9200" and the 4th step app.py file's "ES_HOST", "ES_PORT" variables.
-Here the "localhost:9200" is considered.
+If your elastic search port is not 9200 and host is not the localhost ,you should change following steps:
+3 rd step  
+    change "bulk_es.bat" file's "ES_HOST_POST" variable or change curl command's "localhost:9200" 
+4th step 
+    "app.py" file's "ES_HOST", "ES_PORT" variables.
+    
+Default is "localhost:9200"
 
 # Examples
 ## 1. අමරදේව ගැයූ ක්ලැසික් සුපිරි 10
