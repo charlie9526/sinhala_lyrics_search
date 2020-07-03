@@ -1,4 +1,4 @@
-set ES_HOST=localhost:9200
+set ES_HOST_POST=localhost:9200
 
 cd ..\json_converter
 curl -H "Content-Type: application/json" -XPOST "%ES_HOST%/test_lyrics/_bulk?pretty&refresh" --data-binary "@bulk_sin_lyrics.json"
