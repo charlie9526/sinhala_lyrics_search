@@ -38,7 +38,7 @@
 scrapy crawl sinhala_songs_lyrics_spider  -o lyrics.json
 ```
 
-   The output of the scrper is the "lyrics.json" file of the "scraper\sinhala_songs_lyrics_scraper". Default the lyrics.json is consisted of 1005 songs. The same output            with 1005 songs is mentioned at corpus directory of the repo. 
+   The output of the scrper is the "lyrics.json" file of the "scraper\sinhala_songs_lyrics_scraper". Default the lyrics.json is consisted of 1005 songs. The same unicode            converted output of 1005 songs is at corpus directory of the repo. 
 
 2) JSON converter
     Scraped result is with unicode and it is not capable of using for the BULK API of the Elasticsearch. Therefore according to the reqired format of the BULK API the lyrics         document file is genrated by running "bulk_unicode_converter.py" of the json_converter directory.
