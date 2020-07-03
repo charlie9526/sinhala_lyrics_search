@@ -1,86 +1,88 @@
-PUT test_lyrics
-{
-  "settings":{
-    "analysis":{
-      "analyzer":{
-        "lyrics_analyser":{
-          "tokenizer":"standard",
-          "filter":["3_100_edgegrams","stop_filter"]
-        },
-        "edgengram_analyser":{
-          "tokenizer":"standard",
-          "filter":["3_100_edgegrams"]
-        },
-        "artist_analyser":{
-          "tokenizer":"standard",
-          "filter": ["3_100_edgegrams","stop_filter"],
-          "char_filter":["mappings_char_filter"]
+This should be run with Kibana console.
+
+    PUT test_lyrics
+    {
+      "settings":{
+        "analysis":{
+          "analyzer":{
+            "lyrics_analyser":{
+              "tokenizer":"standard",
+              "filter":["3_100_edgegrams","stop_filter"]
+            },
+            "edgengram_analyser":{
+              "tokenizer":"standard",
+              "filter":["3_100_edgegrams"]
+            },
+            "artist_analyser":{
+              "tokenizer":"standard",
+              "filter": ["3_100_edgegrams","stop_filter"],
+              "char_filter":["mappings_char_filter"]
+            }
+          },
+          "filter":{
+            "3_100_edgegrams":{
+              "type": "edge_ngram",
+              "min_gram": 3,
+              "max_gram": 100
+            },
+            "stop_filter":{
+              "type":"stop",
+              "stopwords":["සහ","හා", "වැනි", "සේ", "සමග"]
+            }
+          },
+          "char_filter": {
+            "mappings_char_filter": {
+              "type": "mapping",
+              "mappings": [
+                ",=> ",
+                "!=> ",
+                "|=> ",
+                "-=> ",
+                "/=> "
+              ]
+            }
+          }
         }
       },
-      "filter":{
-        "3_100_edgegrams":{
-          "type": "edge_ngram",
-          "min_gram": 3,
-          "max_gram": 100
-        },
-        "stop_filter":{
-          "type":"stop",
-          "stopwords":["සහ","හා", "වැනි", "සේ", "සමග"]
-        }
-      },
-      "char_filter": {
-        "mappings_char_filter": {
-          "type": "mapping",
-          "mappings": [
-            ",=> ",
-            "!=> ",
-            "|=> ",
-            "-=> ",
-            "/=> "
-          ]
+      "mappings": {
+        "properties": {
+          "lyrics":{
+            "analyzer": "lyrics_analyser", 
+            "type": "text"
+          },
+          "artists":{
+            "analyzer": "artist_analyser", 
+            "type": "text"
+          },
+          "movie":{
+            "analyzer": "edgengram_analyser", 
+            "type": "text"
+          },
+          "songName":{
+            "analyzer": "edgengram_analyser", 
+            "type": "text"
+          },
+          "genre":{
+            "analyzer": "edgengram_analyser", 
+            "type": "text"
+          },
+          "key":{
+            "type": "text"
+          },
+          "views":{
+            "type": "long"
+          },
+          "lyricsCreater":{
+            "analyzer": "edgengram_analyser", 
+            "type": "text"
+          },
+          "music":{
+            "analyzer": "artist_analyser", 
+            "type": "text"
+          },
+          "beat":{
+            "type": "text"
+          }
         }
       }
     }
-  },
-  "mappings": {
-    "properties": {
-      "lyrics":{
-        "analyzer": "lyrics_analyser", 
-        "type": "text"
-      },
-      "artists":{
-        "analyzer": "artist_analyser", 
-        "type": "text"
-      },
-      "movie":{
-        "analyzer": "edgengram_analyser", 
-        "type": "text"
-      },
-      "songName":{
-        "analyzer": "edgengram_analyser", 
-        "type": "text"
-      },
-      "genre":{
-        "analyzer": "edgengram_analyser", 
-        "type": "text"
-      },
-      "key":{
-        "type": "text"
-      },
-      "views":{
-        "type": "long"
-      },
-      "lyricsCreater":{
-        "analyzer": "edgengram_analyser", 
-        "type": "text"
-      },
-      "music":{
-        "analyzer": "artist_analyser", 
-        "type": "text"
-      },
-      "beat":{
-        "type": "text"
-      }
-    }
-  }
-}
