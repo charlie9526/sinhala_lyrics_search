@@ -1,21 +1,26 @@
-There are four main steps in the project
-    1. Scraping - Scrapy
-    2. Json converting - Python
-    3. Indexing - Elasticsearch
-    4. Searching - Flask
+There are four main steps in the project <br>
+    1. Scraping - Scrapy <br>
+    2. Json converting - Python <br>
+    3. Indexing - Elasticsearch and Kibana <br> 
+    4. Searching - Flask <br>
 
-Requirements
-    Elastic search
-    Python v3
-    Scrapy - python 
-    Flask - python
-    Elasticsearch client - python
-    Singling - python
-    Mtranslate - python
+Key Requirements <br>
+    1. Elastic search <br>
+    2. Kibana <br>
+    3. Python v3 <br>
+    4. Scrapy - python <br> 
+    5. Flask - python <br>
+    6. Elasticsearch client - python <br>
+    7. Singling - python <br>
+    8. Mtranslate - python <br>
 
+Steps
 1) Scraping
     The scraper is the directory of the scraping of the project. Song lyrics are scraped from "https://sinhalasongbook.com". Default 10 pages are scraped and the range can be changed by MIN_RANGE and MAX_RANGE variables of the  "scraper\sinhala_songs_lyrics_scraper\sinhala_songs_lyrics_scraper\spiders\sinhala_songs_lyrics_spider.py".
-
+    run following command from "scraper\sinhala_songs_lyrics_scraper" 
+    
+    scrapy crawl sinhala_songs_lyrics_spider  -o lyrics.json
+    
     The output of the scrper is the "lyrics.json" file of the "scraper\sinhala_songs_lyrics_scraper". Default the lyrics.json is consisted of 1005 songs.
 
 2) JSON converter
