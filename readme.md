@@ -3,7 +3,7 @@ Folder structure <br>
     2. json_converter - Convert the JSON file in to the specified format of the BULK API <br>
     3. scraper - Scrapy application for song scraping <br>
     4. web-app - Flask application for query processing and simple UI. 
-    
+    settings.json is the settings and mappings of the index.
 
 There are four main steps in the project <br>
     1. Scraping - Scrapy <br>
