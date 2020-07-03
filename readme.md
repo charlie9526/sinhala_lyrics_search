@@ -8,9 +8,9 @@
     1. corpus - scraped sinhala lyrics ( 1005 sinhala song lyrics with 9 metadata )
     2. es_batch - Important batch file to input documents from BULK API (create_index.bat)
     3. json_converter - Convert the JSON file in to the specified format of the BULK API
-    3. mapping - Mappings and settings of the index
-    4. scraper - Scrapy application for song scraping 
-    5. web-app - Flask application for query processing and simple UI
+    4. mapping - Mappings and settings of the index
+    5. scraper - Scrapy application for song scraping 
+    6. web-app - Flask application for query processing and simple UI
 
 
 ## Four main steps in the project
