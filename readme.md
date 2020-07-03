@@ -60,11 +60,11 @@ curl -H "Content-Type: application/json" -XPOST "localhost:9200/test_lyrics/_bul
 
     Search and enjoy Sinhala lyrics from "http://localhost:5000/".
 # Important
-If your elastic search port is not 9200 and host is not the localhost ,you should change following steps:
-3 rd step  
-    change "bulk_es.bat" file's "ES_HOST_POST" variable or change curl command's "localhost:9200" 
-4th step 
-    "app.py" file's "ES_HOST", "ES_PORT" variables.
+    If your elastic search port is not 9200 and host is not the localhost ,you should change following steps:
+        3 rd step  
+            change "bulk_es.bat" file's "ES_HOST_POST" variable or change curl command's "localhost:9200" 
+        4th step 
+            "app.py" file's "ES_HOST", "ES_PORT" variables.
     
 Default is "localhost:9200"
 
