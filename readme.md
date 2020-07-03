@@ -10,7 +10,7 @@
     3. json_converter - Convert the JSON file in to the specified format of the BULK API
     3. mapping - Mappings and settings of the index
     4. scraper - Scrapy application for song scraping 
-    5. web-app - Flask application for query processing and simple UI. 
+    5. web-app - Flask application for query processing and simple UI
 
 
 ## Four main steps in the project
@@ -75,31 +75,31 @@ curl -H "Content-Type: application/json" -XPOST "localhost:9200/test_lyrics/_bul
     "name": {
       "buckets": [
         {
-          "doc_count": 12, 
+          "doc_count": 12,         ==========================> Document amount of the search query's result which views are exists between 0-1000
           "from": 0.0, 
           "key": "0.0-1000.0", 
           "to": 1000.0
         }, 
         {
-          "doc_count": 24, 
+          "doc_count": 24,         ==========================> Document amount of the search query's result which views are exists between 1000-2000
           "from": 1000.0, 
           "key": "1000.0-2000.0", 
           "to": 2000.0
         }, 
         {
-          "doc_count": 10, 
+          "doc_count": 10,         ==========================> Document amount of the search query's result which views are exists between 2000-3000 
           "from": 2000.0, 
           "key": "2000.0-3000.0", 
           "to": 3000.0
         }, 
         {
-          "doc_count": 8, 
+          "doc_count": 8,         ==========================> Document amount of the search query's result which views are exists between 3000-4000
           "from": 3000.0, 
           "key": "3000.0-4000.0", 
           "to": 4000.0
         }, 
         {
-          "doc_count": 4, 
+          "doc_count": 4,         ==========================> Document amount of the search query's result which views are exists between 4000-5000
           "from": 4000.0, 
           "key": "4000.0-5000.0", 
           "to": 5000.0
